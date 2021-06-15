@@ -15,7 +15,7 @@ class UrlForm extends Component {
   }
 
   handleSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     let newUrl = {
       long_url: this.state.urlToShorten,
       title: this.state.title

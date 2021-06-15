@@ -17,6 +17,15 @@ export const App = () => {
     console.log('got it!', urls)
   }
 
+  const renderError = () => {
+    return (
+      <article className="display-bad-news">
+        <h3>site currently undergoing maintenance</h3>
+            <a href='http://bright-bucket.surge.sh/'>Try something else in the meantime!</a>
+      </article>
+      )
+  }
+
     return (
       <main className="App">
         <header>
@@ -24,8 +33,11 @@ export const App = () => {
           <UrlForm addUrl={addUrl}/>
         </header>
         <section>
-        <UrlContainer urls={urls}/>
-
+          {urls.length > 0 ? 
+            <UrlContainer urls={urls}/> :
+            renderError()
+          }
+        {/* <UrlContainer urls={urls}/> */}
         </section>
       </main>
     );
