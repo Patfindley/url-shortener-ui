@@ -3,6 +3,9 @@ import './UrlContainer.css';
 
 const UrlContainer = props => {
   const urlEls = props.urls.map(url => {
+    if(!url.id) {
+      url.id = props.urls.length + 1
+    }
     return (
       <div className="url" key={url.id}>
         <h3>{url.title}</h3>

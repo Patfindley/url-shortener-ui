@@ -23,21 +23,12 @@ export const App = () => {
           <h1>URL Shortener</h1>
           <UrlForm addUrl={addUrl}/>
         </header>
-
+        <section>
         <UrlContainer urls={urls}/>
+
+        </section>
       </main>
     );
 }
 
 export default App;
-
-
-// constructor(props) {
-//   super(props);
-//   this.state = {
-//     urls: []
-//   }
-// }
-
-// componentDidMount() {
-// }
