@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import postUrl from '../UrlForm/UrlForm';
 
-const UrlForm = (props) => {
+const UrlForm = ({ addUrl }) => {
   // constructor(props) {
   //   super();
   //   this.props = props;
@@ -17,8 +18,16 @@ const UrlForm = (props) => {
   //   this.setState({ [e.target.name]: e.target.value });
   // }
 
+  
+
   const handleSubmit = e => {
     e.preventDefault();
+    const newUrl = {
+      long_url: urlToShorten,
+      title: title
+    }
+    addUrl(newUrl);
+    postUrl(newUrl);
     clearInputs();
   }
 
