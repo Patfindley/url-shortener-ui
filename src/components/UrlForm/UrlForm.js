@@ -66,7 +66,7 @@ class UrlForm extends Component {
         </button>
       </form>
       {this.state.error && 
-      <h1 style={{color: 'red'}}>Please fill out both inputs</h1>
+      <h1 className='error-message' style={{color: 'red'}}>Please fill out both inputs</h1>
       }
       </>
     )

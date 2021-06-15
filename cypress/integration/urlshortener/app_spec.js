@@ -42,6 +42,21 @@ describe('App', () => {
         statusCode: 404,
       })
     cy.visit('http://localhost:3000/')
-})
+  })
+
+  it('Should display error if an input field is empty upon submission', () => {
+    cy.get('button').click()
+    .get('.error-message')
+  })
+
+  it('Should clear error message if both inputs are filled and submitted', () => {
+    cy.get('button').click()
+    .get('.error-message')
+    cy.get('[placeholder="Title..."]')
+    .type('Pat Findley Codes')
+    .get('[placeholder="URL to Shorten..."]')
+    .type('www.patfindleycodes.com')
+    .get('button').click()
+  })
   
 })
