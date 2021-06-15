@@ -1,45 +1,49 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-class UrlForm extends Component {
-  constructor(props) {
-    super();
-    this.props = props;
-    this.state = {
-      title: '',
-      urlToShorten: ''
-    };
-  }
+const UrlForm = (props) => {
+  // constructor(props) {
+  //   super();
+  //   this.props = props;
+  //   this.state = {
+  //     title: '',
+  //     urlToShorten: ''
+  //   };
+  // }
 
-  handleNameChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+  const [title, setTitle] = useState('')
+  const [urlToShorten, setUrlToShorten] = useState('')
 
-  handleSubmit = e => {
+  // const handleNameChange = e => {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // }
+
+  const handleSubmit = e => {
     e.preventDefault();
-    this.clearInputs();
+    clearInputs();
   }
 
-  clearInputs = () => {
-    this.setState({title: '', urlToShorten: ''});
+  const clearInputs = () => {
+    // this.setState({title: '', urlToShorten: ''});
+    setTitle('')
+    setUrlToShorten('')
   }
 
-  render() {
     return (
       <form>
         <input
           type='text'
           placeholder='Title...'
           name='title'
-          value={this.state.title}
-          onChange={e => this.handleNameChange(e)}
+          value={title}
+          onChange={e => setTitle(e.target.value)}
         />
 
         <input
           type='text'
           placeholder='URL to Shorten...'
           name='title'
-          value={this.state.title}
-          onChange={e => this.handleNameChange(e)}
+          value={urlToShorten}
+          onChange={e => setUrlToShorten(e.target.value)}
         />
 
         <button onClick={e => this.handleSubmit(e)}>
@@ -47,7 +51,16 @@ class UrlForm extends Component {
         </button>
       </form>
     )
-  }
 }
 
 export default UrlForm;
+
+
+// constructor(props) {
+//   super();
+//   this.props = props;
+//   this.state = {
+//     title: '',
+//     urlToShorten: ''
+//   };
+// }

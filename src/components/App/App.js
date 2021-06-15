@@ -1,32 +1,43 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { getUrls } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
-export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      urls: []
-    }
+export const App = () => {
+  const [urls, setUrls] = useState([])
+
+  useEffect(() => {
+    getUrls()
+    .then( data => setUrls(data.urls))
+  }, [])
+
+  const addUrl = (newUrl) => {
+    setUrls([...urls, newUrl])
+    console.log('got it!', urls)
   }
 
-  componentDidMount() {
-  }
-
-  render() {
     return (
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm />
+          <UrlForm addUrl={addUrl}/>
         </header>
 
-        <UrlContainer urls={this.state.urls}/>
+        <UrlContainer urls={urls}/>
       </main>
     );
-  }
 }
 
 export default App;
+
+
+// constructor(props) {
+//   super(props);
+//   this.state = {
+//     urls: []
+//   }
+// }
+
+// componentDidMount() {
+// }
