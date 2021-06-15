@@ -10,7 +10,7 @@ export const App = () => {
   useEffect(() => {
     getUrls()
     .then( data => setUrls(data.urls))
-  }, [])
+  }, [urls])
 
   const addUrl = (newUrl) => {
     setUrls([...urls, newUrl])
